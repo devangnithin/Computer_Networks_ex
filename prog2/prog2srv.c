@@ -29,10 +29,8 @@ int main (int argc, char **argv) {
 	//listenfd = Socket(AF_INET6, SOCK_STREAM, 0); for ipv6
 
     bzero(&servaddr, sizeof(servaddr));
-    servaddr.sin_family = AF_INET;
-	//servaddr.sin6_family = AF_INET6; //ipv6
-	servaddr.sin_port = htons(servPort);
-	//servaddr.sin6_port = htons(servPort);
+    servaddr.sin_family = AF_INET;    //servaddr.sin6_family = AF_INET6; //ipv6
+    servaddr.sin_port = htons(servPort);    //servaddr.sin6_port = htons(servPort);
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
 
     Bind(listenfd, (SA *) &servaddr, sizeof(servaddr));
