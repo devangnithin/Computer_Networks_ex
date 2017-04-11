@@ -29,12 +29,14 @@ int main(int argc, char**argv) {
     }
 
 
-    sockfd = Socket(AF_INET, SOCK_STREAM, 0);
+    sockfd = Socket(AF_INET, SOCK_STREAM, 0); //sockfd = Socket(AF_INET6, SOCK_STREAM, 0);
     bzero(&servaddr, sizeof(servaddr));
-    servaddr.sin_family = AF_INET; //ipv4
-    servaddr.sin_port = htons(servPort); //set port
+    
+	servaddr.sin_family = AF_INET; //ipv4 //servaddr.sin6_family = AF_INET6; //ipv6
+    
+	servaddr.sin_port = htons(servPort); //set port //servaddr.sin6_port = htons(servPort); //set port
 
-    Inet_pton(AF_INET, ipaddress, &servaddr.sin_addr); //set ipaddress etc
+    Inet_pton(AF_INET, ipaddress, &servaddr.sin_addr); //set ipaddress etc //Inet_pton(AF_INET6, ipaddress, &servaddr.sin6_addr); //set ipaddress etc
 
     Connect(sockfd, (SA*) &servaddr, sizeof(servaddr));
 
